@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ectopian Archive</title>
+    <style>
+        :root {
+            --bg-color: #050508;
+            --text-color: #e0e0e0;
+            --accent-color: #7b2cbf;
+            --accent-hover: #9d4edd;
+            --card-bg: #12121a;
+            --border-color: #2a2a35;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--card-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(123, 44, 191, 0.2);
+        }
+        h1 {
+            margin: 0;
+            color: var(--accent-color);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 2.5rem;
+        }
+        header p {
+            color: #888;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 1.5rem;
+            background-color: #0a0a0f;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        .container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        .section {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+        }
+        h2 {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+        /* Search Bar Styles */
+        .search-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: #1a1a24;
+            color: white;
+            font-size: 1.1rem;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        button {
+            padding: 15px 30px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+        #results {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #1a1a24;
+            border-radius: 6px;
+            font-size: 1.2rem;
+            display: none;
+            border-left: 4px solid var(--accent-color);
+        }
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            color: var(--accent-color);
+            text-transform: uppercase;
+        }
+        /* Links */
+        .external-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 12px 24px;
+            background-color: #2a2a35;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            border: 1px solid var(--accent-color);
+            transition: all 0.3s;
+        }
+        .external-link:hover {
+            background-color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>The Ectopian Archive</h1>
+        <p>The 500,000-Year-Old Lexicon of Yami</p>
+    </header>
+
+    <nav>
+        <a href="#dictionary">Dictionary</a>
+        <a href="#lore">Lore</a>
+        <a href="#names">Names Database</a>
+        <a href="#contribute">Add Words</a>
+    </nav>
+
+    <div class="container">
+        
+        <div id="dictionary" class="section">
+            <h2>Two-Way Translator</h2>
+            <p>Enter an English word to find its Ectopian translation, or enter an Ectopian word to find out what it means. The system will search both ways.</p>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search (e.g., senek, what, ghost, finklo)...">
+                <button onclick="translateWord()">Translate</button>
+            </div>
+            <div id="results"></div>
+        </div>
+
+        <div id="lore" class="section">
+            <h2>The Lore of the Universe</h2>
+            <p><strong>Yami</strong> is a huge being that creates these creatures, and Yami has been frozen in space for a millennium.</p>
+            <p>There are multiple races of human species. No, I'm not talking about black and white, I'm talking about... human. No special stuff, just intelligent.</p>
+            <ul>
+                <li><strong>Necroptian:</strong> Lives for 5,000 years maximum. Shapeshifter (boar).</li>
+                <li><strong>Actroptian:</strong> Lives for 50,000 years maximum. Demon (goat horns, sharp teeth).</li>
+                <li><strong>Galoptian:</strong> Lives for 45,000 years maximum. Shapeshifter (fairy).</li>
+                <li><strong>Dragonian:</strong> Lives for 1,000,000 years maximum. Demon, shapeshifter (dragon, sharp teeth, no goat horns).</li>
+                <li><strong>Ectopian:</strong> Lives for 500,000 years maximum. Fluent (has its own language and automatically translates other languages and learns them).</li>
+            </ul>
+        </div>
+
+        <div id="names" class="section">
+            <h2>Registered Names Archive</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>English Name</th>
+                        <th>Ectopian Translation</th>
+                        <th>Necroptian Translation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Carter Wayne</td>
+                        <td>Chelo, Sacho</td>
+                        <td>Nechefo, Exa</td>
+                    </tr>
+                    <tr>
+                        <td>Edward Alexander</td>
+                        <td>edeer, alaxerder</td>
+                        <td>detenart, edfer</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="contribute" class="section">
+            <h2>Expand the Language</h2>
+            <p>The Ectopian language is constantly evolving. If a word doesn't exist yet, or if you need to patch the grammar, you can officially submit it to the master logs here.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJS414dV0IKetINSHMKRRHAEdXZ2GlLR55keFax7lCsM24eA/viewform?usp=header" target="_blank" class="external-link">Access Ectopian Master Form</a>
+        </div>
+
+    </div>
+
+    <script>
+        // Loading the ENTIRE dictionary provided from language.csv
+        // We structure it as an array of objects to easily search both ways.
+        const dictionaryData = `yerama,yeshua
+fustomi,grab
+Awgoe,No
+Awgue(Cha),Yes(yeah/yup)
+awgumana(hon),okay(yes sir)
+Bakro,Century
+barka,Spell
+bebak,thank
+bebo,brother
+befeg,grandfather
+Befta,Write
+bema,mother
+bemeg,grandmother
+bepa,father
+bese,sister
+Birma,Secret
+Bliva,Request
+bock(oe),whole(hole)
+brilka,Pathfinder
+brinda,Winter
+brodo,Day
+broka(s),Myth(s)
+Bromka,Battle
+bronka,Sunset
+Bruka,Clothes
+CacaCHoma,Island
+gegen,See
+cewa,plan
+Chalo,Nothing
+Chargo,Deception
+charka,Flame
+chau(i),Start(er)
+Chelefe,Every
+entey,he
+ento,she
+chense,wall
+cherek(fra),Bless(ing)
+chesrok,lost
+chie(fa)((nim)),work(ing)((er))
+chieng,craft
+meko,a
+Chingo,Data
+chiom,our
+Chira,Question
+chithame,stupid
+chizo,bozo
+Chocofa(Ch),Paint(er)
+chongmang,paragraph
+chorgo,pipe/pole/tube
+Chorlo,Wait
+chovro,Knowledge
+chrofa,Danger
+Chropa,Map
+Chura,Worship
+ChyYA,There/they're/their
+clor,window
+Corgmadet,Alphabet
+Corsa,Cat
+gakel,Hey
+sigchalt,action
+darna,Morning
+defanuel,delusional
+delgar,Silence
+deshnok,glass
+detch,dumb
+dimion,idiot
+dirfla,Betrayer
+Dirka,Guard
+dirkna,Loyalty
+Dofa,Hate
+Dofro,Past
+Dorga,Spirit
+dorma,Truth
+Dorna,Minute
+drafa,Spirit
+Draksa,Conflict
+drama,Snow
+Drana,Sun
+dravma,Honor
+Dreth,Key
+Dreya,Mirror
+drofa,Journey
+Droma,Bear
+druna,Mind
+ectenopo,ectopian
+eecha,responsability
+eee,fan
+eefa,response
+effate,poop
+effato,pee
+ektofe,feed
+emose,know
+Erkaf,Guilt
+eterafa,eternity/forever
+chennai,but
+fador,these
+fadra,Hope
+fe,are
+febb,blue
+tende,need/want
+feg,green
+Fenga,grow
+Fentra,Dream
+feo,orange
+fep,purple
+ferr,red
+Fervka,Strong
+fevel,not
+finklo,what
+fingrade,hungry
+Fira,Earth
+Firafo,Mountain
+firgo,Legend
+firlo,Storm
+Floxa,Slave
+foegeh,in
+Foja,Noon
+Fompa,Valley
+fonda,suck
+fordame,Kungfu
+Fordeme,Karate
+Fordi(me),Martial Arts
+forfi,old
+forfoe,young
+Forga,Say
+forgimy,dirt
+franta,Minute
+frantka,Sound
+fraoma,Eternity
+frek,Shame
+Frenda,Weapon
+Friga,Listen
+Frila,Aura
+frilka,Peace
+Frima,Fear
+Frina,Rain
+Frinja,Peace
+Frivo,Merchant
+frodna,Autumn
+frunjoe,Here
+Froja,Instrument
+Frol,Sacrifice
+Fromrin,Time
+fronko,Guardian
+Frotrinoma,Awesome
+Fugik,Companion/partner
+Fung,Ground
+furano,Strength
+galger,scar
+galtra,Magic
+Galvo,Traveler
+garlad,shirt
+garlods,pants
+garmo,Week
+Garmett,Tool
+orguyoto,on
+gemae,verb
+gemor,noun
+Gera,Large
+ginf'l,innocent
+gingle,sentance
+yandek,hell
+glanta,Spark
+glava,Lightning
+Glira,Blue
+glorma,Wisdom
+goda,go
+gogma,phone/tablet
+gognam,doll
+gomaei,save
+gondrei,bro
+gondra,Deep (emotionally)
+neg,That
+Gorafad,super
+Gorat,Dog
+gorba,Captive
+Gorbap,Mystery
+gorcha,language
+Gorga,Dragon
+gorma,Group
+Gorna,Moon
+gorpod,people
+gorsla,do
+Gorvo,oh
+grada,grand
+Granfu,Chi
+granta,Lie
+Grantaf,Book
+gronka,Bound
+gruaf,stone
+grun,down
+gruwd,sock
+guadog,yo
+guiqma,Family
+gumachia,population
+Hamma,Armor
+hapken,happy
+Hara,Forest
+zedasuke,Wild
+Henta,Far
+hera,Edit
+Hevero,Venture
+hoba,him
+hoka,her
+horded,sorry
+horga,about
+horka,learn
+horktom,complicate
+jangon,code
+jarma,Illusion
+jegenado,Shadow
+Jerm,Child
+jero,god
+jilka,Heart
+Jivro,Rest
+Jorma,Discuss
+Tashkiita,Fool
+Jufa,Joy
+jurgo,it is
+jurnika,Celebrate
+justa,Dark
+justi,light
+Rile,Will
+Expiola,exercise
+Kafo,Eat
+kartra,Dusk
+Kelfa,Horse
+kelikanadrea,psychic
+kerlo,Ancestor
+Kerta,Disagree
+Kilo,Regret
+kirfa,Hot
+Klafo,Build
+Klara,Defeat
+Klish,Read
+Kluma,Victory
+koing,write
+Kora,Sad
+Kormach,Beach
+Kormate,Silver
+Korma,Answer
+Korna,Memory
+Korvo,Move
+Kova,Farmer
+Krasa,Shame
+Krina,Rabbit
+Kroma,Destroy
+kronka,King
+krulma,Betray
+kuroda,Bless
+Kylma,Music
+Larka,Instant
+larvo,Lie
+Lasha,Ritual
+lerka,trend
+lindra,Memory
+Linta,FALSE
+Lira,Courage
+Litha,Relief
+Lofa,Fish
+lofra,Afternoon
+lonfa,Spring
+Lora,End
+Lorna,Ice
+Lumfo,Shiny
+Malgo,Explain
+Manta,Near
+MaWa,tool
+mel,left
+Melfra,Blessing
+mer,right
+Mern,River
+merona,Queen
+Mifo,Jar
+mijor,Instant
+minim,mine
+Miro,Love
+hive,home
+mokato,already
+mooktas,and
+meka,an
+morfa,bucko
+Morfag,Old
+morgaf(oe),too/to
+morgafad,Warm
+morlan,Thunder
+morna,Blind
+chayo,Night
+omyato,up
+mychwacho,Random
+nadafing,clueless
+nakoe,Pussy (scaredy cat)
+Nando,tree
+Narga,Prophecy
+Narvo,Curse
+natche,forgive
+nekedenotuodo,dead
+nekfata,trip
+nekte,donkey
+neod,sped
+Nesto,Think
+Neva,Black
+nifrala,Boundless
+niko-ama,stranger
+nikoafo,big
+nirdo,Evening
+nofot,let
+Nomra,Help
+nordik,stop
+norfura,Curse
+jab,back
+Nyro,Gray
+oodma,house
+orga,custom
+orkkmas,holiday
+Perda,Pink
+Phona,Rat
+Plika,Advisor
+Plufa,Excitement
+Pluma,Bone
+unsuk,cream
+poordfa,b**ch
+Pormo,Future
+pota,please
+heito,give
+Quagik,Friend
+Quakma,Ally
+Quara,Week
+Quilla,Month
+fendom,kill
+raekle,paper
+rafona,Judgment
+randa,Heal
+Rasha,Gold
+Refta,Bird
+rem,street
+Rie-e,Where
+riiw,name
+Rokna,Fire
+Rorga,Cold
+Rovka,Leader
+Rutrinoma,Somewhere
+Rvata,Change
+Salvo,Yellow
+Sarta,Twilight
+Sartaff,Hour
+Sparkotafo,form
+Seka,Surprise
+Sera,Small
+senek,soul
+sharna,Stranger
+sherr,sea/ocean/river/lake
+shurmo,Compassion
+Skira,Sky
+Sko,Sleep
+Slim(o),Begin
+Slora,Art
+vanseh,outnumber
+soma,bed
+sorda,Vision
+Sorme,Wind
+Sorma,Nightmare
+sortht,pillow
+sronka,Make
+Stri,Stand
+Tade,Play
+Swofe,Food
+tavra,number
+terka,Midnight
+Thera,Fog
+Thirsa,Healer
+Thora,Snake
+Thorma,Beast
+Thron,Leg
+Thurka,Curse
+Tingo,Some
+tirona,Grief
+torka,Deaf
+torm,buddy
+torqua,Pride
+Torma,Slow
+Trafa,Jump
+tranta,foul
+trek,we
+Tremma,Sit
+triathama,thing
+Trinoma,Burrito
+trofka,Song
+trunfor,intruder
+turm,Glory
+turodo,found
+Tyra,Calm
+Urga,Insect
+Uvna,Fight
+Uyeo,Upload
+deska,Dark
+vaork,Light
+Varda,Agree
+varlo,Freedom
+verda,Summer
+Verfa,Ask
+Verno,White
+Verta,Star
+Vigna,Down
+Vintch,Vision
+Vinta,TRUE
+virda,Wisdom
+viroch,Joy
+vlasta,coward
+Voda,Up
+Vompa,Treasure
+vorcha,Team
+vorka,Body
+Vorketcho,Teacher
+Vorma,Fast
+Vrafo,Age
+vrako,Enemy
+vringfa,Sight
+vrita,Year
+Vro,Speak
+wago,meant
+Walo,Flag
+wargo,it
+wego,is
+wergu,guy
+Wervanto,Weak
+Werva,Wolf
+Weva,Cloud
+winder,air
+Winfa,clear
+wodama,away
+worgoma,Protect
+wreg,Kindness
+Wremo,Thief
+wrika,Second
+Yata,Dawn
+ye,Me/You/I
+Yed,File
+yaimek,My
+Yer,Your/You're
+yerafah,best
+yerofoe,worst
+yetch,english
+yiema,im
+enjar,Run
+yoimoama,Extension
+yorgamae,sheet
+Yorma,Monster
+Yorna,Talk
+Yro,Axe
+yurk,shut
+Zarma,Soldier
+Zeva,imbecile
+Zorba,Shield
+kabta,f**k
+gerfcha,gay
+bonko,guitar
+chekroma,beautiful
+chekromo,ugly
+turmonos,rizz
+shendokama,invincible
+chiko,this
+cheropo,because
+nekepame,sword
+tripo,fantastic
+uneyo,trio
+duedo,dynamic
+noedo,duo
+bisto,sh*t
+bexta,better
+chessno,piece
+tilko,little
+come,of
+nekedeno,die
+nefo,pain
+belfacho,appointment
+fentado,telekinesis
+yonta,have
+chenkotada,oxymoron
+chentowaba,moron
+vendo,scary
+yifa,i've
+nokadota,way
+wenko,got
+henskae,brat
+mechota,at
+indoto,inevitable
+fena,why
+cheno,wont
+chefoyo,despicable
+cest,last
+mem,word
+chense,any
+ficho,if
+akeh,dare
+nafento,dinner
+chektonto,lunch
+bektofa,breakfast
+entodo,speed
+gentee,organ
+nektodo,game
+tokedo,retard
+jendok,might
+ant,as
+edo,well
+maun,be
+burinku,blink
+furasshu,flash
+nechte,check
+nokaba,would
+dido,back at you
+tenadato,pass
+femota,hello
+tolada,now
+gorslame,dont
+chenian,piano
+hend,rock
+fwa,roll
+gif,with
+enta,great
+chev,come
+gendopo,power
+fenco,should
+gedoma,person
+tefro,ever
+akon,how
+koinatsu,bastard
+nafteg,fat
+amaeda,animal
+mecho,bean
+anatopa,tiger
+tankai,walk
+yahma,alone
+zureku,lone
+naiya,hunter
+shendonezawa,fierce
+sectonopo,sheep
+fintro,take
+huanto,depart
+hauck,fall
+henchaunt,rise
+akeyano,anew
+yano,new
+fentoado,keep
+hunth,just
+fenter,try
+huonafe,never
+hegeromo,alarm
+geroama,clock
+hektomafe,human
+fenchahama,path
+wrup,us
+ponfa-ze,panther
+dus,can
+nircha,even
+ganch,land
+phit,hit
+yoek,look
+nomato,still
+ameyoto,forget
+hemo,show
+nodiko,prove
+deahon,done
+demoi,holy
+foam,so
+ameyano,midst
+hockaemono,from
+muck,must
+nefrakto,battery
+lin,charge
+zelenni,personal
+katchome,kitchen
+ichota,beat
+seefre,murder
+zylee,chase
+roshiku,field
+centeriantofa,court
+oamatodoshyomo,yard
+soulak,drop
+forshakta,call
+entemayem,opponent
+malekosto,clash
+ielakso,strike
+lieafi,roar
+ameyameoto,again
+wentecho,who
+backero,glad
+mirda,live
+henatafe,break
+headonef,may
+quisota,by/buy
+entodrick,execute
+rento,get
+gejo,over
+maldeer,also
+tevo,defense
+toonta,excuse
+zelx,mimic
+casta,terrain
+tafe,generate
+walthey,vivid
+enchfal,very
+teto,mock
+hakata,really
+shkomo,good
+trikofancheo,wrong
+tekewo,believe
+boj,boring
+chito,lord
+heyanto,dignity
+fenat,face
+inoshi,out
+herkor,sting
+faegros,scorpion
+aesto,kiss
+gealopet,intergalactic
+felpa,interface
+qault,yall
+check,cook
+swankete,drink
+Catchuke,today
+Kelikoma,Tomorrow
+haykto,place
+kean,win
+chekerfie,lose
+chaek,loss
+cheabaro,when
+valkrama,has
+chq,or
+queek,man
+quehk,men
+gorqueek,woman
+gorquehk,women
+warakara,which
+Heaomeff,Apple
+retch,add
+inashito,update
+inositol,dictionary
+idocracy,plural
+chaoporo,those
+ganlomeh,grammar
+dhacheh,rule
+chokehg,voice
+oimay,chat
+akenga,self
+yerkenga,yourself
+aido,finish
+haen,proper
+phlanto,base
+phlanko,basement
+chehdersu,Vitality
+shinakaizandra,luminescence
+koriadukame,handsome
+yundoka,fence
+kainotawa,gate`;
+
+        // Parse the raw CSV data into a usable array of objects
+        const lexicon = [];
+        const lines = dictionaryData.split('\n');
+        
+        lines.forEach(line => {
+            const parts = line.split(',');
+            if(parts.length >= 2) {
+                const ect = parts.trim();
+                const eng = parts[1].trim();
+                if(ect && eng) {
+                    lexicon.push({ ectopian: ect.toLowerCase(), english: eng.toLowerCase(), rawEct: ect, rawEng: eng });
+                }
+            }
+        });
+
+        // The translation engine
+        function translateWord() {
+            const input = document.getElementById('searchInput').value.toLowerCase().trim();
+            const resultsDiv = document.getElementById('results');
+            
+            if (input === "") {
+                resultsDiv.style.display = "block";
+                resultsDiv.innerHTML = "Please enter a word to search.";
+                return;
+            }
+
+            // Search both ways
+            const foundEctToEng = lexicon.find(word => word.ectopian.includes(input));
+            const foundEngToEct = lexicon.find(word => word.english.includes(input));
+
+            resultsDiv.style.display = "block";
+
+            if (foundEngToEct && foundEngToEct.english === input) {
+                // Exact English match found
+                resultsDiv.innerHTML = `English: <span style="color: #888;">${foundEngToEct.rawEng}</span> <br> Ectopian: <strong style="color: white; font-size: 1.5rem;">${foundEngToEct.rawEct}</strong>`;
+            } else if (foundEctToEng && foundEctToEng.ectopian === input) {
+                // Exact Ectopian match found
+                resultsDiv.innerHTML = `Ectopian: <span style="color: #888;">${foundEctToEng.rawEct}</span> <br> English: <strong style="color: white; font-size: 1.5rem;">${foundEctToEng.rawEng}</strong>`;
+            } else if (foundEngToEct || foundEctToEng) {
+                // Partial match found
+                const bestMatch = foundEngToEct || foundEctToEng;
+                resultsDiv.innerHTML = `<em>Partial Match Found:</em><br>Ectopian: <strong style="color: white;">${bestMatch.rawEct}</strong> = English: <strong style="color: white;">${bestMatch.rawEng}</strong>`;
+            } else {
+                resultsDiv.innerHTML = `Word not found in the archive. <br><a href="#contribute" style="color: var(--accent-hover); font-size: 0.9rem;">Submit it to the master logs!</a>`;
+            }
+        }
+
+        // Allow pressing Enter to search
+        document.getElementById("searchInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                translateWord();
+            }
+        });
+    </script>
+
+</body>
+</html>
