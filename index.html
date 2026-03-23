@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Ectopian Archive</title>
+    <title>The Ectopian Master Archive</title>
     <style>
         :root {
-            --bg-color: #050508;
-            --text-color: #e0e0e0;
-            --accent-color: #7b2cbf;
-            --accent-hover: #9d4edd;
-            --card-bg: #12121a;
+            --bg-color: #030305;
+            --text-color: #f0f0f0;
+            --accent-color: #ff3366;
+            --accent-hover: #ff6699;
+            --card-bg: #111118;
             --border-color: #2a2a35;
         }
         body {
@@ -26,7 +26,7 @@
             padding: 3rem 2rem;
             text-align: center;
             border-bottom: 2px solid var(--accent-color);
-            box-shadow: 0 4px 15px rgba(123, 44, 191, 0.2);
+            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.2);
         }
         h1 {
             margin: 0;
@@ -35,32 +35,11 @@
             text-transform: uppercase;
             font-size: 2.5rem;
         }
-        header p {
+        .stats {
             color: #888;
             font-style: italic;
-            font-size: 1.2rem;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 1.5rem;
-            background-color: #0a0a0f;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--border-color);
-        }
-        nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: var(--accent-color);
+            font-size: 1.1rem;
+            margin-top: 10px;
         }
         .container {
             max-width: 900px;
@@ -81,7 +60,6 @@
             padding-bottom: 0.5rem;
             margin-top: 0;
         }
-        /* Search Bar Styles */
         .search-container {
             display: flex;
             gap: 15px;
@@ -94,7 +72,7 @@
             border-radius: 6px;
             background-color: #1a1a24;
             color: white;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
         input[type="text"]:focus {
             outline: none;
@@ -123,814 +101,866 @@
             display: none;
             border-left: 4px solid var(--accent-color);
         }
-        /* Table Styles */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
+        .match-row {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
         }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-        th {
-            color: var(--accent-color);
-            text-transform: uppercase;
-        }
-        /* Links */
-        .external-link {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 12px 24px;
-            background-color: #2a2a35;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            border: 1px solid var(--accent-color);
-            transition: all 0.3s;
-        }
-        .external-link:hover {
-            background-color: var(--accent-color);
+        .match-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>The Ectopian Archive</h1>
-        <p>The 500,000-Year-Old Lexicon of Yami</p>
+        <h1>The Ectopian Master Archive</h1>
+        <div class="stats" id="wordCountDisplay">Loading Lexicon...</div>
     </header>
 
-    <nav>
-        <a href="#dictionary">Dictionary</a>
-        <a href="#lore">Lore</a>
-        <a href="#names">Names Database</a>
-        <a href="#contribute">Add Words</a>
-    </nav>
-
     <div class="container">
-        
-        <div id="dictionary" class="section">
-            <h2>Two-Way Translator</h2>
-            <p>Enter an English word to find its Ectopian translation, or enter an Ectopian word to find out what it means. The system will search both ways.</p>
+        <div class="section">
+            <h2>Ultimate Two-Way Translator</h2>
+            <p>Every single branch word, suffix, and duplicate has been hard-split. Type English or Ectopian.</p>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search (e.g., senek, what, ghost, finklo)...">
+                <input type="text" id="searchInput" placeholder="Search (e.g., yoe, ameyatomie, f**king)...">
                 <button onclick="translateWord()">Translate</button>
             </div>
             <div id="results"></div>
         </div>
-
-        <div id="lore" class="section">
-            <h2>The Lore of the Universe</h2>
-            <p><strong>Yami</strong> is a huge being that creates these creatures, and Yami has been frozen in space for a millennium.</p>
-            <p>There are multiple races of human species. No, I'm not talking about black and white, I'm talking about... human. No special stuff, just intelligent.</p>
-            <ul>
-                <li><strong>Necroptian:</strong> Lives for 5,000 years maximum. Shapeshifter (boar).</li>
-                <li><strong>Actroptian:</strong> Lives for 50,000 years maximum. Demon (goat horns, sharp teeth).</li>
-                <li><strong>Galoptian:</strong> Lives for 45,000 years maximum. Shapeshifter (fairy).</li>
-                <li><strong>Dragonian:</strong> Lives for 1,000,000 years maximum. Demon, shapeshifter (dragon, sharp teeth, no goat horns).</li>
-                <li><strong>Ectopian:</strong> Lives for 500,000 years maximum. Fluent (has its own language and automatically translates other languages and learns them).</li>
-            </ul>
-        </div>
-
-        <div id="names" class="section">
-            <h2>Registered Names Archive</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>English Name</th>
-                        <th>Ectopian Translation</th>
-                        <th>Necroptian Translation</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Carter Wayne</td>
-                        <td>Chelo, Sacho</td>
-                        <td>Nechefo, Exa</td>
-                    </tr>
-                    <tr>
-                        <td>Edward Alexander</td>
-                        <td>edeer, alaxerder</td>
-                        <td>detenart, edfer</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div id="contribute" class="section">
-            <h2>Expand the Language</h2>
-            <p>The Ectopian language is constantly evolving. If a word doesn't exist yet, or if you need to patch the grammar, you can officially submit it to the master logs here.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJS414dV0IKetINSHMKRRHAEdXZ2GlLR55keFax7lCsM24eA/viewform?usp=header" target="_blank" class="external-link">Access Ectopian Master Form</a>
-        </div>
-
     </div>
 
     <script>
-        // Loading the ENTIRE dictionary provided from language.csv
-        // We structure it as an array of objects to easily search both ways.
-        const dictionaryData = `yerama,yeshua
-fustomi,grab
-Awgoe,No
-Awgue(Cha),Yes(yeah/yup)
-awgumana(hon),okay(yes sir)
-Bakro,Century
-barka,Spell
-bebak,thank
-bebo,brother
-befeg,grandfather
-Befta,Write
-bema,mother
-bemeg,grandmother
-bepa,father
-bese,sister
-Birma,Secret
-Bliva,Request
-bock(oe),whole(hole)
-brilka,Pathfinder
-brinda,Winter
-brodo,Day
-broka(s),Myth(s)
-Bromka,Battle
-bronka,Sunset
-Bruka,Clothes
-CacaCHoma,Island
-gegen,See
-cewa,plan
-Chalo,Nothing
-Chargo,Deception
-charka,Flame
-chau(i),Start(er)
-Chelefe,Every
-entey,he
-ento,she
-chense,wall
-cherek(fra),Bless(ing)
-chesrok,lost
-chie(fa)((nim)),work(ing)((er))
-chieng,craft
-meko,a
-Chingo,Data
-chiom,our
-Chira,Question
-chithame,stupid
-chizo,bozo
-Chocofa(Ch),Paint(er)
-chongmang,paragraph
-chorgo,pipe/pole/tube
-Chorlo,Wait
-chovro,Knowledge
-chrofa,Danger
-Chropa,Map
-Chura,Worship
-ChyYA,There/they're/their
-clor,window
-Corgmadet,Alphabet
-Corsa,Cat
-gakel,Hey
-sigchalt,action
-darna,Morning
-defanuel,delusional
-delgar,Silence
-deshnok,glass
-detch,dumb
-dimion,idiot
-dirfla,Betrayer
-Dirka,Guard
-dirkna,Loyalty
-Dofa,Hate
-Dofro,Past
-Dorga,Spirit
-dorma,Truth
-Dorna,Minute
-drafa,Spirit
-Draksa,Conflict
-drama,Snow
-Drana,Sun
-dravma,Honor
-Dreth,Key
-Dreya,Mirror
-drofa,Journey
-Droma,Bear
-druna,Mind
-ectenopo,ectopian
-eecha,responsability
-eee,fan
-eefa,response
-effate,poop
-effato,pee
-ektofe,feed
-emose,know
-Erkaf,Guilt
-eterafa,eternity/forever
-chennai,but
-fador,these
-fadra,Hope
-fe,are
-febb,blue
-tende,need/want
-feg,green
-Fenga,grow
-Fentra,Dream
-feo,orange
-fep,purple
-ferr,red
-Fervka,Strong
-fevel,not
-finklo,what
-fingrade,hungry
-Fira,Earth
-Firafo,Mountain
-firgo,Legend
-firlo,Storm
-Floxa,Slave
-foegeh,in
-Foja,Noon
-Fompa,Valley
-fonda,suck
-fordame,Kungfu
-Fordeme,Karate
-Fordi(me),Martial Arts
-forfi,old
-forfoe,young
-Forga,Say
-forgimy,dirt
-franta,Minute
-frantka,Sound
-fraoma,Eternity
-frek,Shame
-Frenda,Weapon
-Friga,Listen
-Frila,Aura
-frilka,Peace
-Frima,Fear
-Frina,Rain
-Frinja,Peace
-Frivo,Merchant
-frodna,Autumn
-frunjoe,Here
-Froja,Instrument
-Frol,Sacrifice
-Fromrin,Time
-fronko,Guardian
-Frotrinoma,Awesome
-Fugik,Companion/partner
-Fung,Ground
-furano,Strength
-galger,scar
-galtra,Magic
-Galvo,Traveler
-garlad,shirt
-garlods,pants
-garmo,Week
-Garmett,Tool
-orguyoto,on
-gemae,verb
-gemor,noun
-Gera,Large
-ginf'l,innocent
-gingle,sentance
-yandek,hell
-glanta,Spark
-glava,Lightning
-Glira,Blue
-glorma,Wisdom
-goda,go
-gogma,phone/tablet
-gognam,doll
-gomaei,save
-gondrei,bro
-gondra,Deep (emotionally)
-neg,That
-Gorafad,super
-Gorat,Dog
-gorba,Captive
-Gorbap,Mystery
-gorcha,language
-Gorga,Dragon
-gorma,Group
-Gorna,Moon
-gorpod,people
-gorsla,do
-Gorvo,oh
-grada,grand
-Granfu,Chi
-granta,Lie
-Grantaf,Book
-gronka,Bound
-gruaf,stone
-grun,down
-gruwd,sock
-guadog,yo
-guiqma,Family
-gumachia,population
-Hamma,Armor
-hapken,happy
-Hara,Forest
-zedasuke,Wild
-Henta,Far
-hera,Edit
-Hevero,Venture
-hoba,him
-hoka,her
-horded,sorry
-horga,about
-horka,learn
-horktom,complicate
-jangon,code
-jarma,Illusion
-jegenado,Shadow
-Jerm,Child
-jero,god
-jilka,Heart
-Jivro,Rest
-Jorma,Discuss
-Tashkiita,Fool
-Jufa,Joy
-jurgo,it is
-jurnika,Celebrate
-justa,Dark
-justi,light
-Rile,Will
-Expiola,exercise
-Kafo,Eat
-kartra,Dusk
-Kelfa,Horse
-kelikanadrea,psychic
-kerlo,Ancestor
-Kerta,Disagree
-Kilo,Regret
-kirfa,Hot
-Klafo,Build
-Klara,Defeat
-Klish,Read
-Kluma,Victory
-koing,write
-Kora,Sad
-Kormach,Beach
-Kormate,Silver
-Korma,Answer
-Korna,Memory
-Korvo,Move
-Kova,Farmer
-Krasa,Shame
-Krina,Rabbit
-Kroma,Destroy
-kronka,King
-krulma,Betray
-kuroda,Bless
-Kylma,Music
-Larka,Instant
-larvo,Lie
-Lasha,Ritual
-lerka,trend
-lindra,Memory
-Linta,FALSE
-Lira,Courage
-Litha,Relief
-Lofa,Fish
-lofra,Afternoon
-lonfa,Spring
-Lora,End
-Lorna,Ice
-Lumfo,Shiny
-Malgo,Explain
-Manta,Near
-MaWa,tool
-mel,left
-Melfra,Blessing
-mer,right
-Mern,River
-merona,Queen
-Mifo,Jar
-mijor,Instant
-minim,mine
-Miro,Love
-hive,home
-mokato,already
-mooktas,and
-meka,an
-morfa,bucko
-Morfag,Old
-morgaf(oe),too/to
-morgafad,Warm
-morlan,Thunder
-morna,Blind
-chayo,Night
-omyato,up
-mychwacho,Random
-nadafing,clueless
-nakoe,Pussy (scaredy cat)
-Nando,tree
-Narga,Prophecy
-Narvo,Curse
-natche,forgive
-nekedenotuodo,dead
-nekfata,trip
-nekte,donkey
-neod,sped
-Nesto,Think
-Neva,Black
-nifrala,Boundless
-niko-ama,stranger
-nikoafo,big
-nirdo,Evening
-nofot,let
-Nomra,Help
-nordik,stop
-norfura,Curse
-jab,back
-Nyro,Gray
-oodma,house
-orga,custom
-orkkmas,holiday
-Perda,Pink
-Phona,Rat
-Plika,Advisor
-Plufa,Excitement
-Pluma,Bone
-unsuk,cream
-poordfa,b**ch
-Pormo,Future
-pota,please
-heito,give
-Quagik,Friend
-Quakma,Ally
-Quara,Week
-Quilla,Month
-fendom,kill
-raekle,paper
-rafona,Judgment
-randa,Heal
-Rasha,Gold
-Refta,Bird
-rem,street
-Rie-e,Where
-riiw,name
-Rokna,Fire
-Rorga,Cold
-Rovka,Leader
-Rutrinoma,Somewhere
-Rvata,Change
-Salvo,Yellow
-Sarta,Twilight
-Sartaff,Hour
-Sparkotafo,form
-Seka,Surprise
-Sera,Small
-senek,soul
-sharna,Stranger
-sherr,sea/ocean/river/lake
-shurmo,Compassion
-Skira,Sky
-Sko,Sleep
-Slim(o),Begin
-Slora,Art
-vanseh,outnumber
-soma,bed
-sorda,Vision
-Sorme,Wind
-Sorma,Nightmare
-sortht,pillow
-sronka,Make
-Stri,Stand
-Tade,Play
-Swofe,Food
-tavra,number
-terka,Midnight
-Thera,Fog
-Thirsa,Healer
-Thora,Snake
-Thorma,Beast
-Thron,Leg
-Thurka,Curse
-Tingo,Some
-tirona,Grief
-torka,Deaf
-torm,buddy
-torqua,Pride
-Torma,Slow
-Trafa,Jump
-tranta,foul
-trek,we
-Tremma,Sit
-triathama,thing
-Trinoma,Burrito
-trofka,Song
-trunfor,intruder
-turm,Glory
-turodo,found
-Tyra,Calm
-Urga,Insect
-Uvna,Fight
-Uyeo,Upload
-deska,Dark
-vaork,Light
-Varda,Agree
-varlo,Freedom
-verda,Summer
-Verfa,Ask
-Verno,White
-Verta,Star
-Vigna,Down
-Vintch,Vision
-Vinta,TRUE
-virda,Wisdom
-viroch,Joy
-vlasta,coward
-Voda,Up
-Vompa,Treasure
-vorcha,Team
-vorka,Body
-Vorketcho,Teacher
-Vorma,Fast
-Vrafo,Age
-vrako,Enemy
-vringfa,Sight
-vrita,Year
-Vro,Speak
-wago,meant
-Walo,Flag
-wargo,it
-wego,is
-wergu,guy
-Wervanto,Weak
-Werva,Wolf
-Weva,Cloud
-winder,air
-Winfa,clear
-wodama,away
-worgoma,Protect
-wreg,Kindness
-Wremo,Thief
-wrika,Second
-Yata,Dawn
-ye,Me/You/I
-Yed,File
-yaimek,My
-Yer,Your/You're
-yerafah,best
-yerofoe,worst
-yetch,english
-yiema,im
-enjar,Run
-yoimoama,Extension
-yorgamae,sheet
-Yorma,Monster
-Yorna,Talk
-Yro,Axe
-yurk,shut
-Zarma,Soldier
-Zeva,imbecile
-Zorba,Shield
-kabta,f**k
-gerfcha,gay
-bonko,guitar
-chekroma,beautiful
-chekromo,ugly
-turmonos,rizz
-shendokama,invincible
-chiko,this
-cheropo,because
-nekepame,sword
-tripo,fantastic
-uneyo,trio
-duedo,dynamic
-noedo,duo
-bisto,sh*t
-bexta,better
-chessno,piece
-tilko,little
-come,of
-nekedeno,die
-nefo,pain
-belfacho,appointment
-fentado,telekinesis
-yonta,have
-chenkotada,oxymoron
-chentowaba,moron
-vendo,scary
-yifa,i've
-nokadota,way
-wenko,got
-henskae,brat
-mechota,at
-indoto,inevitable
-fena,why
-cheno,wont
-chefoyo,despicable
-cest,last
-mem,word
-chense,any
-ficho,if
-akeh,dare
-nafento,dinner
-chektonto,lunch
-bektofa,breakfast
-entodo,speed
-gentee,organ
-nektodo,game
-tokedo,retard
-jendok,might
-ant,as
-edo,well
-maun,be
-burinku,blink
-furasshu,flash
-nechte,check
-nokaba,would
-dido,back at you
-tenadato,pass
-femota,hello
-tolada,now
-gorslame,dont
-chenian,piano
-hend,rock
-fwa,roll
-gif,with
-enta,great
-chev,come
-gendopo,power
-fenco,should
-gedoma,person
-tefro,ever
-akon,how
-koinatsu,bastard
-nafteg,fat
-amaeda,animal
-mecho,bean
-anatopa,tiger
-tankai,walk
-yahma,alone
-zureku,lone
-naiya,hunter
-shendonezawa,fierce
-sectonopo,sheep
-fintro,take
-huanto,depart
-hauck,fall
-henchaunt,rise
-akeyano,anew
-yano,new
-fentoado,keep
-hunth,just
-fenter,try
-huonafe,never
-hegeromo,alarm
-geroama,clock
-hektomafe,human
-fenchahama,path
-wrup,us
-ponfa-ze,panther
-dus,can
-nircha,even
-ganch,land
-phit,hit
-yoek,look
-nomato,still
-ameyoto,forget
-hemo,show
-nodiko,prove
-deahon,done
-demoi,holy
-foam,so
-ameyano,midst
-hockaemono,from
-muck,must
-nefrakto,battery
-lin,charge
-zelenni,personal
-katchome,kitchen
-ichota,beat
-seefre,murder
-zylee,chase
-roshiku,field
-centeriantofa,court
-oamatodoshyomo,yard
-soulak,drop
-forshakta,call
-entemayem,opponent
-malekosto,clash
-ielakso,strike
-lieafi,roar
-ameyameoto,again
-wentecho,who
-backero,glad
-mirda,live
-henatafe,break
-headonef,may
-quisota,by/buy
-entodrick,execute
-rento,get
-gejo,over
-maldeer,also
-tevo,defense
-toonta,excuse
-zelx,mimic
-casta,terrain
-tafe,generate
-walthey,vivid
-enchfal,very
-teto,mock
-hakata,really
-shkomo,good
-trikofancheo,wrong
-tekewo,believe
-boj,boring
-chito,lord
-heyanto,dignity
-fenat,face
-inoshi,out
-herkor,sting
-faegros,scorpion
-aesto,kiss
-gealopet,intergalactic
-felpa,interface
-qault,yall
-check,cook
-swankete,drink
-Catchuke,today
-Kelikoma,Tomorrow
-haykto,place
-kean,win
-chekerfie,lose
-chaek,loss
-cheabaro,when
-valkrama,has
-chq,or
-queek,man
-quehk,men
-gorqueek,woman
-gorquehk,women
-warakara,which
-Heaomeff,Apple
-retch,add
-inashito,update
-inositol,dictionary
-idocracy,plural
-chaoporo,those
-ganlomeh,grammar
-dhacheh,rule
-chokehg,voice
-oimay,chat
-akenga,self
-yerkenga,yourself
-aido,finish
-haen,proper
-phlanto,base
-phlanko,basement
-chehdersu,Vitality
-shinakaizandra,luminescence
-koriadukame,handsome
-yundoka,fence
-kainotawa,gate`;
+        // The Motherload. Every bracket and parenthesis split into separate objects.
+        const lexicon = [
+            { ect: "yerama", eng: "yeshua" },
+            { ect: "fustomi", eng: "grab" },
+            { ect: "Awgoe", eng: "No" },
+            { ect: "Awgue", eng: "Yes" },
+            { ect: "AwgueCha", eng: "yeah/yup" },
+            { ect: "awgumana", eng: "okay" },
+            { ect: "awgumanahon", eng: "yes sir" },
+            { ect: "Bakro", eng: "Century" },
+            { ect: "barka", eng: "Spell" },
+            { ect: "bebak", eng: "thank" },
+            { ect: "bebo", eng: "brother" },
+            { ect: "befeg", eng: "grandfather" },
+            { ect: "Befta", eng: "Write" },
+            { ect: "bema", eng: "mother" },
+            { ect: "bemeg", eng: "grandmother" },
+            { ect: "bepa", eng: "father" },
+            { ect: "bese", eng: "sister" },
+            { ect: "Birma", eng: "Secret" },
+            { ect: "Bliva", eng: "Request" },
+            { ect: "bock", eng: "whole" },
+            { ect: "bockoe", eng: "hole" },
+            { ect: "brilka", eng: "Pathfinder" },
+            { ect: "brinda", eng: "Winter" },
+            { ect: "brodo", eng: "Day" },
+            { ect: "broka", eng: "Myth" },
+            { ect: "brokas", eng: "Myths" },
+            { ect: "Bromka", eng: "Battle" },
+            { ect: "bronka", eng: "Sunset" },
+            { ect: "Bruka", eng: "Clothes" },
+            { ect: "CacaCHoma", eng: "Island" },
+            { ect: "gegen", eng: "See" },
+            { ect: "cewa", eng: "plan" },
+            { ect: "Chalo", eng: "Nothing" },
+            { ect: "Chargo", eng: "Deception" },
+            { ect: "charka", eng: "Flame" },
+            { ect: "chau", eng: "Start" },
+            { ect: "chaui", eng: "Starter" },
+            { ect: "Chelefe", eng: "Every" },
+            { ect: "entey", eng: "he" },
+            { ect: "ento", eng: "she" },
+            { ect: "chense", eng: "wall" },
+            { ect: "cherek", eng: "Bless" },
+            { ect: "cherekfra", eng: "Blessing" },
+            { ect: "cherekfro", eng: "Blesses" },
+            { ect: "chesrok", eng: "lost" },
+            { ect: "chie", eng: "work" },
+            { ect: "chiefa", eng: "working" },
+            { ect: "chienim", eng: "worker" },
+            { ect: "chieng", eng: "craft" },
+            { ect: "meko", eng: "a" },
+            { ect: "Chingo", eng: "Data" },
+            { ect: "chiom", eng: "our" },
+            { ect: "Chira", eng: "Question" },
+            { ect: "chithame", eng: "stupid" },
+            { ect: "chithameki", eng: "stupidity" },
+            { ect: "chithameta", eng: "stupidest" },
+            { ect: "chizo", eng: "bozo" },
+            { ect: "Chocofa", eng: "Paint" },
+            { ect: "ChocofaCh", eng: "Painter" },
+            { ect: "chongmang", eng: "paragraph" },
+            { ect: "chorgo", eng: "pipe/pole/tube" },
+            { ect: "Chorlo", eng: "Wait" },
+            { ect: "Choro", eng: "Itchy" },
+            { ect: "Chara", eng: "Scratch" },
+            { ect: "chovro", eng: "Knowledge" },
+            { ect: "chrofa", eng: "Danger" },
+            { ect: "Chropa", eng: "Map" },
+            { ect: "Chura", eng: "Worship" },
+            { ect: "ChyYA", eng: "There" },
+            { ect: "ChyYA", eng: "they're" },
+            { ect: "ChyYA", eng: "their" },
+            { ect: "clor", eng: "window" },
+            { ect: "Corgmadet", eng: "Alphabet" },
+            { ect: "Corsa", eng: "Cat" },
+            { ect: "gakel", eng: "Hey" },
+            { ect: "sigchalt", eng: "action" },
+            { ect: "darna", eng: "Morning" },
+            { ect: "defanuel", eng: "delusional" },
+            { ect: "delgar", eng: "Silence" },
+            { ect: "deshnok", eng: "glass" },
+            { ect: "detch", eng: "dumb" },
+            { ect: "dimion", eng: "idiot" },
+            { ect: "dirfla", eng: "Betrayer" },
+            { ect: "Dirka", eng: "Guard" },
+            { ect: "dirkna", eng: "Loyalty" },
+            { ect: "Dofa", eng: "Hate" },
+            { ect: "Dofro", eng: "Past" },
+            { ect: "Dorga", eng: "Spirit" },
+            { ect: "dorma", eng: "Truth" },
+            { ect: "Dorna", eng: "Minute" },
+            { ect: "drafa", eng: "Spirit" },
+            { ect: "Draksa", eng: "Conflict" },
+            { ect: "drama", eng: "Snow" },
+            { ect: "Drana", eng: "Sun" },
+            { ect: "dravma", eng: "Honor" },
+            { ect: "Dreth", eng: "Key" },
+            { ect: "Dreya", eng: "Mirror" },
+            { ect: "drofa", eng: "Journey" },
+            { ect: "Droma", eng: "Bear" },
+            { ect: "druna", eng: "Mind" },
+            { ect: "drunata", eng: "Mindful" },
+            { ect: "ectenopo", eng: "ectopian" },
+            { ect: "eecha", eng: "responsability" },
+            { ect: "eee", eng: "fan" },
+            { ect: "eefa", eng: "response" },
+            { ect: "eefas", eng: "responses" },
+            { ect: "eefad", eng: "responsed" },
+            { ect: "effate", eng: "poop" },
+            { ect: "effato", eng: "pee" },
+            { ect: "ektofe", eng: "feed" },
+            { ect: "emose", eng: "know" },
+            { ect: "Erkaf", eng: "Guilt" },
+            { ect: "Erkafa", eng: "Guilty" },
+            { ect: "eterafa", eng: "eternity" },
+            { ect: "eterafa", eng: "forever" },
+            { ect: "chennai", eng: "but" },
+            { ect: "chennaiyok", eng: "supposed" },
+            { ect: "fador", eng: "these" },
+            { ect: "fadra", eng: "Hope" },
+            { ect: "fe", eng: "are" },
+            { ect: "febb", eng: "blue" },
+            { ect: "tende", eng: "need" },
+            { ect: "tendesah", eng: "want" },
+            { ect: "feg", eng: "green" },
+            { ect: "Fenga", eng: "grow" },
+            { ect: "Fengato", eng: "growing" },
+            { ect: "Fentra", eng: "Dream" },
+            { ect: "feo", eng: "orange" },
+            { ect: "fep", eng: "purple" },
+            { ect: "ferr", eng: "red" },
+            { ect: "Fervka", eng: "Strong" },
+            { ect: "fevel", eng: "not" },
+            { ect: "finklo", eng: "what" },
+            { ect: "fingrade", eng: "hungry" },
+            { ect: "Fira", eng: "Earth" },
+            { ect: "Firafo", eng: "Mountain" },
+            { ect: "firgo", eng: "Legend" },
+            { ect: "firlo", eng: "Storm" },
+            { ect: "Floxa", eng: "Slave" },
+            { ect: "foegeh", eng: "in" },
+            { ect: "Foja", eng: "Noon" },
+            { ect: "Fompa", eng: "Valley" },
+            { ect: "fonda", eng: "suck" },
+            { ect: "fordame", eng: "Kungfu" },
+            { ect: "Fordeme", eng: "Karate" },
+            { ect: "Fordi", eng: "Martial" },
+            { ect: "Fordime", eng: "Martial Arts" },
+            { ect: "forfi", eng: "old" },
+            { ect: "forfie", eng: "older" },
+            { ect: "forfoe", eng: "young" },
+            { ect: "forfoecha", eng: "younger" },
+            { ect: "forfoeto", eng: "youngster" },
+            { ect: "forfoeme", eng: "youngling" },
+            { ect: "Forga", eng: "Say" },
+            { ect: "forgimy", eng: "dirt" },
+            { ect: "forgimydama", eng: "dirty" },
+            { ect: "franta", eng: "Minute" },
+            { ect: "frantka", eng: "Sound" },
+            { ect: "fraoma", eng: "Eternity" },
+            { ect: "frek", eng: "Shame" },
+            { ect: "freknar", eng: "Shameful" },
+            { ect: "freknok", eng: "Shameless" },
+            { ect: "Frenda", eng: "Weapon" },
+            { ect: "Friga", eng: "Listen" },
+            { ect: "Frila", eng: "Aura" },
+            { ect: "frilka", eng: "Peace" },
+            { ect: "frilka", eng: "Pathfinder" },
+            { ect: "Frima", eng: "Fear" },
+            { ect: "Frina", eng: "Rain" },
+            { ect: "Frinja", eng: "Peace" },
+            { ect: "Frivo", eng: "Merchant" },
+            { ect: "frodna", eng: "Autumn" },
+            { ect: "frunjoe", eng: "Here" },
+            { ect: "Froja", eng: "Instrument" },
+            { ect: "Frol", eng: "Sacrifice" },
+            { ect: "Fromrin", eng: "Time" },
+            { ect: "fronko", eng: "Guardian" },
+            { ect: "Frotrinoma", eng: "Awesome" },
+            { ect: "Fugik", eng: "Companion/partner" },
+            { ect: "Fung", eng: "Ground" },
+            { ect: "furano", eng: "Strength" },
+            { ect: "galger", eng: "scar" },
+            { ect: "galgern", eng: "scaring" },
+            { ect: "galtra", eng: "Magic" },
+            { ect: "Galvo", eng: "Traveler" },
+            { ect: "garlad", eng: "shirt" },
+            { ect: "garlads", eng: "shirts" },
+            { ect: "garlods", eng: "pants" },
+            { ect: "garmo", eng: "Week" },
+            { ect: "Garmett", eng: "Tool" },
+            { ect: "orguyoto", eng: "on" },
+            { ect: "gemae", eng: "verb" },
+            { ect: "gemor", eng: "noun" },
+            { ect: "Gera", eng: "Large" },
+            { ect: "ginf'l", eng: "innocent" },
+            { ect: "gingle", eng: "sentance" },
+            { ect: "yandek", eng: "hell" },
+            { ect: "glanta", eng: "Spark" },
+            { ect: "glava", eng: "Lightning" },
+            { ect: "Glira", eng: "Blue" },
+            { ect: "glorma", eng: "Wisdom" },
+            { ect: "goda", eng: "go" },
+            { ect: "godacha", eng: "going" },
+            { ect: "gogma", eng: "phone/tablet" },
+            { ect: "gognam", eng: "doll" },
+            { ect: "gomaei", eng: "save" },
+            { ect: "gondrei", eng: "bro" },
+            { ect: "gondra", eng: "Deep (emotionally)" },
+            { ect: "neg", eng: "That" },
+            { ect: "ach", eng: "they" },
+            { ect: "o", eng: "the" },
+            { ect: "ento", eng: "then" },
+            { ect: "mencha", eng: "them" },
+            { ect: "Gorafad", eng: "super" },
+            { ect: "Gorat", eng: "Dog" },
+            { ect: "gorba", eng: "Captive" },
+            { ect: "Gorbap", eng: "Mystery" },
+            { ect: "gorcha", eng: "language" },
+            { ect: "Gorga", eng: "Dragon" },
+            { ect: "gorma", eng: "Group" },
+            { ect: "gormas", eng: "Groups" },
+            { ect: "Gorna", eng: "Moon" },
+            { ect: "gorpod", eng: "people" },
+            { ect: "gorsla", eng: "do" },
+            { ect: "gorsla'chi", eng: "doing" },
+            { ect: "Gorvo", eng: "oh" },
+            { ect: "grada", eng: "grand" },
+            { ect: "Granfu", eng: "Chi" },
+            { ect: "granta", eng: "Lie" },
+            { ect: "Grantaf", eng: "Book" },
+            { ect: "gronka", eng: "Bound" },
+            { ect: "gruaf", eng: "stone" },
+            { ect: "grun", eng: "down" },
+            { ect: "gruny", eng: "under" },
+            { ect: "gruwd", eng: "sock" },
+            { ect: "gruwde", eng: "socks" },
+            { ect: "guadog", eng: "yo" },
+            { ect: "guiqma", eng: "Family" },
+            { ect: "gumachia", eng: "population" },
+            { ect: "Hamma", eng: "Armor" },
+            { ect: "hapken", eng: "happy" },
+            { ect: "Hara", eng: "Forest" },
+            { ect: "zedasuke", eng: "Wild" },
+            { ect: "Henta", eng: "Far" },
+            { ect: "hera", eng: "Edit" },
+            { ect: "Hevero", eng: "Venture" },
+            { ect: "hoba", eng: "him" },
+            { ect: "hoka", eng: "her" },
+            { ect: "horded", eng: "sorry" },
+            { ect: "horga", eng: "about" },
+            { ect: "horka", eng: "learn" },
+            { ect: "horkad", eng: "learned" },
+            { ect: "horktom", eng: "complicate" },
+            { ect: "horktoms", eng: "complicated" },
+            { ect: "jangon", eng: "code" },
+            { ect: "jarma", eng: "Illusion" },
+            { ect: "jegenado", eng: "Shadow" },
+            { ect: "Jerm", eng: "Child" },
+            { ect: "Jermas", eng: "Children" },
+            { ect: "jero", eng: "god" },
+            { ect: "jilka", eng: "Heart" },
+            { ect: "Jivro", eng: "Rest" },
+            { ect: "Jorma", eng: "Discuss" },
+            { ect: "Tashkiita", eng: "Fool" },
+            { ect: "Jufa", eng: "Joy" },
+            { ect: "jurgo", eng: "it is" },
+            { ect: "jurnika", eng: "Celebrate" },
+            { ect: "justa", eng: "Dark" },
+            { ect: "justaff", eng: "Darkness" },
+            { ect: "justi", eng: "light" },
+            { ect: "Rile", eng: "Will" },
+            { ect: "Expiola", eng: "exercise" },
+            { ect: "Expiolano", eng: "exorcist" },
+            { ect: "Kafo", eng: "Eat" },
+            { ect: "kartra", eng: "Dusk" },
+            { ect: "Kelfa", eng: "Horse" },
+            { ect: "kelikanadrea", eng: "psychic" },
+            { ect: "kerlo", eng: "Ancestor" },
+            { ect: "kerlos", eng: "Ancestors" },
+            { ect: "Kerta", eng: "Disagree" },
+            { ect: "Kilo", eng: "Regret" },
+            { ect: "kirfa", eng: "Hot" },
+            { ect: "Klafo", eng: "Build" },
+            { ect: "Klara", eng: "Defeat" },
+            { ect: "Klarafa", eng: "Defeated" },
+            { ect: "Klish", eng: "Read" },
+            { ect: "Kluma", eng: "Victory" },
+            { ect: "koing", eng: "write" },
+            { ect: "Kora", eng: "Sad" },
+            { ect: "Kora", eng: "Sadness" },
+            { ect: "Kormach", eng: "Beach" },
+            { ect: "Kormate", eng: "Silver" },
+            { ect: "Korma", eng: "Answer" },
+            { ect: "Korna", eng: "Memory" },
+            { ect: "Korvo", eng: "Move" },
+            { ect: "Kova", eng: "Farmer" },
+            { ect: "Krasa", eng: "Shame" },
+            { ect: "Krina", eng: "Rabbit" },
+            { ect: "Kroma", eng: "Destroy" },
+            { ect: "kronka", eng: "King" },
+            { ect: "krulma", eng: "Betray" },
+            { ect: "krulmaden", eng: "Betrayed" },
+            { ect: "krulmael", eng: "Betrayal" },
+            { ect: "kuroda", eng: "Bless" },
+            { ect: "Kylma", eng: "Music" },
+            { ect: "Larka", eng: "Instant" },
+            { ect: "larvo", eng: "Lie" },
+            { ect: "Lasha", eng: "Ritual" },
+            { ect: "lerka", eng: "trend" },
+            { ect: "lerkad", eng: "trending" },
+            { ect: "lindra", eng: "Memory" },
+            { ect: "Linta", eng: "FALSE" },
+            { ect: "Lira", eng: "Courage" },
+            { ect: "Litha", eng: "Relief" },
+            { ect: "Lofa", eng: "Fish" },
+            { ect: "lofra", eng: "Afternoon" },
+            { ect: "lonfa", eng: "Spring" },
+            { ect: "Lora", eng: "End" },
+            { ect: "Lorna", eng: "Ice" },
+            { ect: "Lumfo", eng: "Shiny" },
+            { ect: "Malgo", eng: "Explain" },
+            { ect: "Manta", eng: "Near" },
+            { ect: "MaWa", eng: "tool" },
+            { ect: "mel", eng: "left" },
+            { ect: "Melfra", eng: "Blessing" },
+            { ect: "mer", eng: "right" },
+            { ect: "Mern", eng: "River" },
+            { ect: "merona", eng: "Queen" },
+            { ect: "Mifo", eng: "Jar" },
+            { ect: "mijor", eng: "Instant" },
+            { ect: "minim", eng: "mine" },
+            { ect: "minimy", eng: "miner" },
+            { ect: "minims", eng: "miners" },
+            { ect: "miniming", eng: "mining" },
+            { ect: "Miro", eng: "Love" },
+            { ect: "hive", eng: "home" },
+            { ect: "mokato", eng: "already" },
+            { ect: "mooktas", eng: "and" },
+            { ect: "meka", eng: "an" },
+            { ect: "morfa", eng: "bucko" },
+            { ect: "Morfag", eng: "Old" },
+            { ect: "morgafoe", eng: "too" },
+            { ect: "morgafoe", eng: "to" },
+            { ect: "morgafad", eng: "Warm" },
+            { ect: "morlan", eng: "Thunder" },
+            { ect: "morna", eng: "Blind" },
+            { ect: "chayo", eng: "Night" },
+            { ect: "omyato", eng: "up" },
+            { ect: "mychwacho", eng: "Random" },
+            { ect: "nadafing", eng: "clueless" },
+            { ect: "nakoe", eng: "Pussy" },
+            { ect: "Nando", eng: "tree" },
+            { ect: "Narga", eng: "Prophecy" },
+            { ect: "Narvo", eng: "Curse" },
+            { ect: "natche", eng: "forgive" },
+            { ect: "nekedenotuodo", eng: "dead" },
+            { ect: "nekedenotuodota", eng: "death" },
+            { ect: "nekfata", eng: "trip" },
+            { ect: "nekte", eng: "donkey" },
+            { ect: "neod", eng: "sped" },
+            { ect: "Nesto", eng: "Think" },
+            { ect: "Neva", eng: "Black" },
+            { ect: "nifrala", eng: "Boundless" },
+            { ect: "niko-ama", eng: "stranger" },
+            { ect: "nikoafo", eng: "big" },
+            { ect: "nirdo", eng: "Evening" },
+            { ect: "nofot", eng: "let" },
+            { ect: "Nomra", eng: "Help" },
+            { ect: "Nomras", eng: "Helps" },
+            { ect: "Nomrai", eng: "Helped" },
+            { ect: "nordik", eng: "stop" },
+            { ect: "norfura", eng: "Curse" },
+            { ect: "jab", eng: "back" },
+            { ect: "Nyro", eng: "Gray" },
+            { ect: "oodma", eng: "house" },
+            { ect: "orga", eng: "custom" },
+            { ect: "orkkmas", eng: "holiday" },
+            { ect: "Perda", eng: "Pink" },
+            { ect: "Phona", eng: "Rat" },
+            { ect: "Plika", eng: "Advisor" },
+            { ect: "Plufa", eng: "Excitement" },
+            { ect: "Pluma", eng: "Bone" },
+            { ect: "unsuk", eng: "cream" },
+            { ect: "poordfa", eng: "b**ch" },
+            { ect: "Pormo", eng: "Future" },
+            { ect: "pota", eng: "please" },
+            { ect: "heito", eng: "give" },
+            { ect: "heitochi", eng: "giving" },
+            { ect: "heitoe", eng: "gives" },
+            { ect: "Quagik", eng: "Friend" },
+            { ect: "Quakma", eng: "Ally" },
+            { ect: "Quara", eng: "Week" },
+            { ect: "Quilla", eng: "Month" },
+            { ect: "fendom", eng: "kill" },
+            { ect: "fendomoak", eng: "killer" },
+            { ect: "raekle", eng: "paper" },
+            { ect: "rafona", eng: "Judgment" },
+            { ect: "randa", eng: "Heal" },
+            { ect: "Rasha", eng: "Gold" },
+            { ect: "Refta", eng: "Bird" },
+            { ect: "rem", eng: "street" },
+            { ect: "Rie-e", eng: "Where" },
+            { ect: "Rie-ek", eng: "we're" },
+            { ect: "riiw", eng: "name" },
+            { ect: "Roga", eng: "Anger" },
+            { ect: "Rota", eng: "Angry" },
+            { ect: "Rokna", eng: "Fire" },
+            { ect: "Rorga", eng: "Cold" },
+            { ect: "Rovka", eng: "Leader" },
+            { ect: "Rutrinoma", eng: "Somewhere" },
+            { ect: "Rvata", eng: "Change" },
+            { ect: "Salvo", eng: "Yellow" },
+            { ect: "Sarta", eng: "Twilight" },
+            { ect: "Sartaff", eng: "Hour" },
+            { ect: "Sparkotafo", eng: "form" },
+            { ect: "Seka", eng: "Surprise" },
+            { ect: "Sera", eng: "Small" },
+            { ect: "senek", eng: "soul" },
+            { ect: "sharna", eng: "Stranger" },
+            { ect: "sherr", eng: "sea/ocean/river/lake/water/pond" },
+            { ect: "shurmo", eng: "Compassion" },
+            { ect: "Skira", eng: "Sky" },
+            { ect: "Sko", eng: "Sleep" },
+            { ect: "Slim", eng: "Be" },
+            { ect: "Slimo", eng: "Begin" },
+            { ect: "Slimoento", eng: "Beginning" },
+            { ect: "Slora", eng: "Art" },
+            { ect: "Sloranta", eng: "Artificial" },
+            { ect: "vanseh", eng: "outnumber" },
+            { ect: "vansehsko", eng: "outnumbered" },
+            { ect: "soma", eng: "bed" },
+            { ect: "sorda", eng: "Vision" },
+            { ect: "Sorme", eng: "Wind" },
+            { ect: "Sorma", eng: "Nightmare" },
+            { ect: "sortht", eng: "pillow" },
+            { ect: "sronka", eng: "Make" },
+            { ect: "Stri", eng: "Stand" },
+            { ect: "Tade", eng: "Play" },
+            { ect: "Swofe", eng: "Food" },
+            { ect: "tavra", eng: "number" },
+            { ect: "tavraska", eng: "numbered" },
+            { ect: "terka", eng: "Midnight" },
+            { ect: "Thera", eng: "Fog" },
+            { ect: "Thirsa", eng: "Healer" },
+            { ect: "Thora", eng: "Snake" },
+            { ect: "Thorma", eng: "Beast" },
+            { ect: "Thron", eng: "Leg" },
+            { ect: "Thurka", eng: "Curse" },
+            { ect: "Tingo", eng: "Some" },
+            { ect: "tirona", eng: "Grief" },
+            { ect: "torka", eng: "Deaf" },
+            { ect: "torm", eng: "bud" },
+            { ect: "tormlas", eng: "buddy" },
+            { ect: "torqua", eng: "Pride" },
+            { ect: "Torma", eng: "Slow" },
+            { ect: "Trafa", eng: "Jump" },
+            { ect: "tranta", eng: "foul" },
+            { ect: "trek", eng: "we" },
+            { ect: "trekende", eng: "weve" },
+            { ect: "Tremma", eng: "Sit" },
+            { ect: "triathama", eng: "thing" },
+            { ect: "Trinoma", eng: "Burrito" },
+            { ect: "trofka", eng: "Song" },
+            { ect: "trunfor", eng: "intruder" },
+            { ect: "turma", eng: "Glory" },
+            { ect: "turmoach", eng: "Glorious" },
+            { ect: "turodo", eng: "found" },
+            { ect: "Tyra", eng: "Calm" },
+            { ect: "Urga", eng: "Insect" },
+            { ect: "Uvna", eng: "Fight" },
+            { ect: "Uyeo", eng: "Upload" },
+            { ect: "deska", eng: "Dark" },
+            { ect: "vaork", eng: "Light (illumination)" },
+            { ect: "Varda", eng: "Agree" },
+            { ect: "varlo", eng: "Freedom" },
+            { ect: "verda", eng: "Summer" },
+            { ect: "Verfa", eng: "Ask" },
+            { ect: "Verfacha", eng: "Asked" },
+            { ect: "Verfachi", eng: "Asking" },
+            { ect: "Verno", eng: "White" },
+            { ect: "Verta", eng: "Star" },
+            { ect: "Vigna", eng: "Down" },
+            { ect: "Vintch", eng: "Vision" },
+            { ect: "Vinta", eng: "TRUE" },
+            { ect: "virda", eng: "Wisdom" },
+            { ect: "viroch", eng: "Joy" },
+            { ect: "vlasta", eng: "coward" },
+            { ect: "Voda", eng: "Up" },
+            { ect: "Vompa", eng: "Treasure" },
+            { ect: "vorcha", eng: "Team" },
+            { ect: "vorka", eng: "Body" },
+            { ect: "Vorketcho", eng: "Teacher" },
+            { ect: "Vorma", eng: "Fast" },
+            { ect: "Vrafo", eng: "Age" },
+            { ect: "vrako", eng: "Enemy" },
+            { ect: "vrakos", eng: "Enemies" },
+            { ect: "vringfa", eng: "Sight" },
+            { ect: "vrita", eng: "Year" },
+            { ect: "Vro", eng: "Speak" },
+            { ect: "wago", eng: "meant" },
+            { ect: "Walo", eng: "Flag" },
+            { ect: "wargo", eng: "it" },
+            { ect: "wego", eng: "is" },
+            { ect: "wegont", eng: "isnt" },
+            { ect: "wergu", eng: "guy" },
+            { ect: "Wervanto", eng: "Weak" },
+            { ect: "Werva", eng: "Wolf" },
+            { ect: "Weva", eng: "Cloud" },
+            { ect: "winder", eng: "air" },
+            { ect: "Winfa", eng: "clear" },
+            { ect: "wodama", eng: "away" },
+            { ect: "worgoma", eng: "Protect" },
+            { ect: "wreg", eng: "Kind" },
+            { ect: "wregan", eng: "Kindness" },
+            { ect: "Wremo", eng: "Thief" },
+            { ect: "wrika", eng: "Second" },
+            { ect: "Yata", eng: "Dawn" },
+            // THE BRANCH WORD MOTHERLOAD: ME/YOU/I/AM separated!
+            { ect: "ye", eng: "Me" },
+            { ect: "yoe", eng: "You" },
+            { ect: "yie", eng: "I" },
+            { ect: "ya", eng: "Am" },
+            { ect: "Yed", eng: "File" },
+            { ect: "yaimek", eng: "My" },
+            { ect: "Yer", eng: "Your" },
+            { ect: "Yer", eng: "You're" },
+            { ect: "yerafah", eng: "best" },
+            { ect: "yerofoe", eng: "worst" },
+            { ect: "yetch", eng: "english" },
+            { ect: "yiema", eng: "im" },
+            { ect: "enjar", eng: "Run" },
+            { ect: "yoimoama", eng: "Extension" },
+            { ect: "yorgamae", eng: "sheet" },
+            { ect: "yorgamaes", eng: "sheets" },
+            { ect: "Yorma", eng: "Monster" },
+            { ect: "Yorna", eng: "Talk" },
+            { ect: "Yro", eng: "Axe" },
+            { ect: "yurk", eng: "shut" },
+            { ect: "Zarma", eng: "Soldier" },
+            { ect: "Zeva", eng: "imbecile" },
+            { ect: "Zorba", eng: "Shield" },
+            { ect: "kabta", eng: "f**k" },
+            { ect: "kabtakan", eng: "f**ker" },
+            { ect: "kabtacha", eng: "f**king" },
+            { ect: "gerfcha", eng: "gay" },
+            { ect: "bonko", eng: "guitar" },
+            { ect: "chekroma", eng: "beautiful" },
+            { ect: "chekromo", eng: "ugly" },
+            { ect: "turmonos", eng: "rizz" },
+            { ect: "turmonosla", eng: "rizzler" },
+            { ect: "shendokama", eng: "invincible" },
+            { ect: "chiko", eng: "this" },
+            { ect: "cheropo", eng: "because" },
+            { ect: "nekepame", eng: "sword" },
+            { ect: "tripo", eng: "fantastic" },
+            { ect: "uneyo", eng: "trio" },
+            { ect: "duedo", eng: "dynamic" },
+            { ect: "noedo", eng: "duo" },
+            { ect: "bisto", eng: "sh*t" },
+            { ect: "bexta", eng: "better" },
+            { ect: "chessno", eng: "piece" },
+            { ect: "tilko", eng: "little" },
+            { ect: "come", eng: "of" },
+            { ect: "nekedeno", eng: "die" },
+            { ect: "nefo", eng: "pain" },
+            { ect: "nefodo", eng: "painful" },
+            { ect: "belfacho", eng: "appointment" },
+            { ect: "fentado", eng: "telekinesis" },
+            { ect: "yonta", eng: "have" },
+            { ect: "chenkotada", eng: "oxymoron" },
+            { ect: "chentowaba", eng: "moron" },
+            { ect: "vendo", eng: "scary" },
+            { ect: "vendi", eng: "scari" },
+            { ect: "vendikama", eng: "scariness" },
+            { ect: "vendokach", eng: "scared" },
+            { ect: "yifa", eng: "i've" },
+            { ect: "nokadota", eng: "way" },
+            { ect: "wenko", eng: "got" },
+            { ect: "henskae", eng: "brat" },
+            { ect: "mechota", eng: "at" },
+            { ect: "indoto", eng: "inevitable" },
+            { ect: "fena", eng: "why" },
+            { ect: "cheno", eng: "wont" },
+            { ect: "chefoyo", eng: "despicable" },
+            { ect: "cest", eng: "last" },
+            { ect: "mem", eng: "word" },
+            { ect: "chense", eng: "any" },
+            { ect: "ficho", eng: "if" },
+            { ect: "akeh", eng: "dare" },
+            { ect: "nafento", eng: "dinner" },
+            { ect: "chektonto", eng: "lunch" },
+            { ect: "bektofa", eng: "breakfast" },
+            { ect: "entodo", eng: "speed" },
+            { ect: "gentee", eng: "organ" },
+            { ect: "nektodo", eng: "game" },
+            { ect: "tokedo", eng: "retard" },
+            { ect: "tokedode", eng: "retarded" },
+            { ect: "jendok", eng: "might" },
+            { ect: "ant", eng: "as" },
+            { ect: "edo", eng: "well" },
+            { ect: "maun", eng: "be" },
+            { ect: "burinku", eng: "blink" },
+            { ect: "furasshu", eng: "flash" },
+            { ect: "nechte", eng: "check" },
+            { ect: "nechteke", eng: "checked" },
+            { ect: "nokaba", eng: "would" },
+            { ect: "dido", eng: "back at you-same to you" },
+            { ect: "tenadato", eng: "pass" },
+            { ect: "femota", eng: "hello" },
+            { ect: "tolada", eng: "now" },
+            { ect: "gorslame", eng: "dont" },
+            { ect: "chenian", eng: "piano" },
+            { ect: "hend", eng: "rock" },
+            { ect: "fwa", eng: "roll" },
+            { ect: "gif", eng: "with" },
+            { ect: "enta", eng: "great" },
+            { ect: "chev", eng: "come" },
+            { ect: "gendopo", eng: "power" },
+            { ect: "fenco", eng: "should" },
+            { ect: "gedoma", eng: "person" },
+            { ect: "tefro", eng: "ever" },
+            { ect: "akon", eng: "how" },
+            { ect: "koinatsu", eng: "bastard" },
+            { ect: "nafteg", eng: "fat" },
+            { ect: "amaeda", eng: "animal" },
+            { ect: "mecho", eng: "bean" },
+            { ect: "anatopa", eng: "tiger" },
+            { ect: "tankai", eng: "walk" },
+            { ect: "yahma", eng: "alone" },
+            { ect: "zureku", eng: "lone" },
+            { ect: "naiya", eng: "hunter" },
+            { ect: "shendonezawa", eng: "fierce (creature, being, ECT.)" },
+            { ect: "sectonopo", eng: "sheep" },
+            { ect: "fintro", eng: "take" },
+            { ect: "fehuanto", eng: "depart" },
+            { ect: "huanto", eng: "part" },
+            { ect: "hauck", eng: "fall" },
+            { ect: "henchaunt", eng: "rise" },
+            { ect: "akeyano", eng: "anew" },
+            { ect: "yano", eng: "new" },
+            { ect: "fentoado", eng: "keep" },
+            { ect: "hunth", eng: "just" },
+            { ect: "fenter", eng: "try" },
+            { ect: "fenterche", eng: "trying" },
+            { ect: "fentera", eng: "tried" },
+            { ect: "huonafe", eng: "never" },
+            { ect: "hegeromo", eng: "alarm" },
+            { ect: "geroama", eng: "clock" },
+            { ect: "hektomafe", eng: "human" },
+            { ect: "fenchahama", eng: "path" },
+            { ect: "wrup", eng: "us" },
+            { ect: "ponfa-ze", eng: "panther" },
+            { ect: "dus", eng: "can" },
+            { ect: "dusk", eng: "cant" },
+            { ect: "duskta", eng: "cant" },
+            { ect: "nircha", eng: "even" },
+            { ect: "ganch", eng: "land" },
+            { ect: "phit", eng: "hit" },
+            { ect: "yoek", eng: "look" },
+            { ect: "nomato", eng: "still" },
+            { ect: "ameyoto", eng: "forgot" },
+            { ect: "ameyoeto", eng: "forgot" },
+            { ect: "ameyatoha", eng: "forgetting" },
+            { ect: "ameyatocha", eng: "forgetful" },
+            { ect: "ameyatomie", eng: "forgotten" },
+            { ect: "hemo", eng: "show" },
+            { ect: "nodiko", eng: "prove" },
+            { ect: "deahon", eng: "done" },
+            { ect: "demoi", eng: "holy" },
+            { ect: "foam", eng: "so" },
+            { ect: "ameyano", eng: "midst" },
+            { ect: "hockaemono", eng: "from" },
+            { ect: "muck", eng: "must" },
+            { ect: "nefrakto", eng: "battery" },
+            { ect: "lin", eng: "charge" },
+            { ect: "linto", eng: "charger" },
+            { ect: "lincha", eng: "charging" },
+            { ect: "zelenni", eng: "personal" },
+            { ect: "zelenniex", eng: "personality" },
+            { ect: "zelennial", eng: "personality" },
+            { ect: "zelennium", eng: "personally" },
+            { ect: "katchome", eng: "kitchen" },
+            { ect: "ichota", eng: "beat" },
+            { ect: "seefre", eng: "murder" },
+            { ect: "seefreku", eng: "murderer" },
+            { ect: "zylee", eng: "chase" },
+            { ect: "zyleek", eng: "chaser" },
+            { ect: "roshiku", eng: "field" },
+            { ect: "centeriantofa", eng: "court" },
+            { ect: "oamatodoshyomo", eng: "yard" },
+            { ect: "soulak", eng: "drop" },
+            { ect: "forshakta", eng: "call" },
+            { ect: "entemayem", eng: "opponent" },
+            { ect: "malekosto", eng: "clash" },
+            { ect: "ielakso", eng: "strike" },
+            { ect: "lieafi", eng: "roar" },
+            { ect: "ameyameoto", eng: "again" },
+            { ect: "wentecho", eng: "who" },
+            { ect: "backero", eng: "glad" },
+            { ect: "mirdo", eng: "live" },
+            { ect: "mirda", eng: "living" },
+            { ect: "mirdomano", eng: "living" },
+            { ect: "henatafe", eng: "break" },
+            { ect: "headonef", eng: "may" },
+            { ect: "quisota", eng: "by" },
+            { ect: "quisota", eng: "buy" },
+            { ect: "quisota", eng: "bye" },
+            { ect: "entodrick", eng: "execute" },
+            { ect: "entodricku", eng: "executed" },
+            { ect: "rento", eng: "get" },
+            { ect: "rentoyama", eng: "getting" },
+            { ect: "gejo", eng: "over" },
+            { ect: "maldeer", eng: "also" },
+            { ect: "tevo", eng: "defense" },
+            { ect: "tevoko", eng: "defenses" },
+            { ect: "toonta", eng: "excuse" },
+            { ect: "zelx", eng: "mimic" },
+            { ect: "zelxo", eng: "mimicer" },
+            { ect: "casta", eng: "terrain" },
+            { ect: "tafe", eng: "generate" },
+            { ect: "fere", eng: "generation" },
+            { ect: "walthey", eng: "vivid" },
+            { ect: "enchfal", eng: "very" },
+            { ect: "teto", eng: "mock" },
+            { ect: "tetochi", eng: "mocking" },
+            { ect: "hakata", eng: "really" },
+            { ect: "shkomo", eng: "good" },
+            { ect: "ben", eng: "good" },
+            { ect: "trikofancheo", eng: "wrong" },
+            { ect: "tekewo", eng: "believe" },
+            { ect: "boj", eng: "bor" },
+            { ect: "bojedo", eng: "boring" },
+            { ect: "bojadoka", eng: "bored" },
+            { ect: "chito", eng: "lord" },
+            { ect: "heyanto", eng: "dignity" },
+            { ect: "fenat", eng: "face" },
+            { ect: "inoshi", eng: "out" },
+            { ect: "herkor", eng: "sting" },
+            { ect: "herkoes", eng: "stinger" },
+            { ect: "faegros", eng: "scorpion" },
+            { ect: "aesto", eng: "kiss" },
+            { ect: "gealopet", eng: "intergalactic" },
+            { ect: "gealopetal", eng: "intergalactical" },
+            { ect: "felpa", eng: "interface" },
+            { ect: "qault", eng: "yall" },
+            { ect: "ault", eng: "all" },
+            { ect: "check", eng: "cook" },
+            { ect: "checkeul", eng: "cooked" },
+            { ect: "swankete", eng: "drink" },
+            { ect: "Catchuke", eng: "today" },
+            { ect: "Kelikoma", eng: "Tomorrow" },
+            { ect: "haykto", eng: "place" },
+            { ect: "kean", eng: "win" },
+            { ect: "keanda", eng: "winner" },
+            { ect: "chekerfie", eng: "lose" },
+            { ect: "chaek", eng: "loss" },
+            { ect: "cheabaro", eng: "when" },
+            { ect: "valkrama", eng: "has" },
+            { ect: "chq", eng: "or" },
+            { ect: "queek", eng: "man" },
+            { ect: "quehk", eng: "men" },
+            { ect: "gorqueek", eng: "woman" },
+            { ect: "gorquehk", eng: "women" },
+            { ect: "warakara", eng: "which" },
+            { ect: "Heaomeff", eng: "Apple" },
+            { ect: "retch", eng: "add" },
+            { ect: "inashito", eng: "update" },
+            { ect: "inositol", eng: "dictionary" },
+            { ect: "idocracy", eng: "plural" },
+            { ect: "chaoporo", eng: "those" },
+            { ect: "ganlomeh", eng: "grammar" },
+            { ect: "dhacheh", eng: "rule" },
+            { ect: "chokehg", eng: "voice" },
+            { ect: "oimay", eng: "chat" },
+            { ect: "akenga", eng: "self" },
+            { ect: "yerkenga", eng: "yourself" },
+            { ect: "yerkongas", eng: "yourselves" },
+            { ect: "aido", eng: "finish" },
+            { ect: "haen", eng: "proper" },
+            { ect: "haenq", eng: "properly" },
+            { ect: "phlanto", eng: "base" },
+            { ect: "phlanko", eng: "basement" },
+            { ect: "chehdersu", eng: "Vitality" },
+            { ect: "shinakaizandra", eng: "luminescence/luminescent" },
+            { ect: "koriadukame", eng: "handsome" },
+            { ect: "yundoka", eng: "fence" },
+            { ect: "kainotawa", eng: "gate" }
+        ];
 
-        // Parse the raw CSV data into a usable array of objects
-        const lexicon = [];
-        const lines = dictionaryData.split('\n');
-        
-        lines.forEach(line => {
-            const parts = line.split(',');
-            if(parts.length >= 2) {
-                const ect = parts.trim();
-                const eng = parts[1].trim();
-                if(ect && eng) {
-                    lexicon.push({ ectopian: ect.toLowerCase(), english: eng.toLowerCase(), rawEct: ect, rawEng: eng });
-                }
-            }
-        });
+        // Display exact count to prove it loaded fully
+        document.getElementById('wordCountDisplay').innerText = `Lexicon Active: ${lexicon.length} Total Registered Words`;
 
-        // The translation engine
         function translateWord() {
             const input = document.getElementById('searchInput').value.toLowerCase().trim();
             const resultsDiv = document.getElementById('results');
             
             if (input === "") {
                 resultsDiv.style.display = "block";
-                resultsDiv.innerHTML = "Please enter a word to search.";
+                resultsDiv.innerHTML = "Bro, you have to type something.";
                 return;
             }
 
-            // Search both ways
-            const foundEctToEng = lexicon.find(word => word.ectopian.includes(input));
-            const foundEngToEct = lexicon.find(word => word.english.includes(input));
+            // Find all exact matches from both sides
+            const matches = lexicon.filter(w => w.eng.toLowerCase() === input || w.ect.toLowerCase() === input);
 
             resultsDiv.style.display = "block";
 
-            if (foundEngToEct && foundEngToEct.english === input) {
-                // Exact English match found
-                resultsDiv.innerHTML = `English: <span style="color: #888;">${foundEngToEct.rawEng}</span> <br> Ectopian: <strong style="color: white; font-size: 1.5rem;">${foundEngToEct.rawEct}</strong>`;
-            } else if (foundEctToEng && foundEctToEng.ectopian === input) {
-                // Exact Ectopian match found
-                resultsDiv.innerHTML = `Ectopian: <span style="color: #888;">${foundEctToEng.rawEct}</span> <br> English: <strong style="color: white; font-size: 1.5rem;">${foundEctToEng.rawEng}</strong>`;
-            } else if (foundEngToEct || foundEctToEng) {
-                // Partial match found
-                const bestMatch = foundEngToEct || foundEctToEng;
-                resultsDiv.innerHTML = `<em>Partial Match Found:</em><br>Ectopian: <strong style="color: white;">${bestMatch.rawEct}</strong> = English: <strong style="color: white;">${bestMatch.rawEng}</strong>`;
+            if (matches.length > 0) {
+                let htmlOutput = "";
+                matches.forEach(match => {
+                    htmlOutput += `<div class="match-row">Ectopian: <strong style="color: white; font-size: 1.4rem;">${match.ect}</strong> = English: <span style="color: #bbb;">${match.eng}</span></div>`;
+                });
+                resultsDiv.innerHTML = htmlOutput;
             } else {
-                resultsDiv.innerHTML = `Word not found in the archive. <br><a href="#contribute" style="color: var(--accent-hover); font-size: 0.9rem;">Submit it to the master logs!</a>`;
+                // If no exact match, do a partial search
+                const partials = lexicon.filter(w => w.eng.toLowerCase().includes(input) || w.ect.toLowerCase().includes(input));
+                if (partials.length > 0) {
+                    let htmlOutput = "<em>No exact match. Did you mean:</em><br><br>";
+                    // Show up to top 5 partials to keep it clean
+                    partials.slice(0, 5).forEach(match => {
+                         htmlOutput += `<div class="match-row">Ectopian: <strong style="color: white;">${match.ect}</strong> = English: <span style="color: #bbb;">${match.eng}</span></div>`;
+                    });
+                    resultsDiv.innerHTML = htmlOutput;
+                } else {
+                    resultsDiv.innerHTML = `Word not found. Either you spelled it wrong, or Yami hasn't invented it yet.`;
+                }
             }
         }
 
@@ -942,6 +972,5 @@ kainotawa,gate`;
             }
         });
     </script>
-
 </body>
 </html>
